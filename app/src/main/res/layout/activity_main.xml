@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/main_title"
+        style="@style/text_30"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:text="Welcome Back" />
+
+    <TextView
+        android:id="@+id/main_sub_title"
+        style="@style/text_12"
+        android:layout_below="@id/main_title"
+        android:layout_centerHorizontal="true"
+        android:text="Enter your credential to login" />
+
+    <EditText
+        style="@style/edit_15"
+        android:id="@+id/main_username"
+        android:layout_below="@id/main_sub_title"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:drawableLeft="@drawable/user"
+        android:hint="Username" />
+
+    <EditText
+        style="@style/edit_15"
+        android:id="@+id/main_password"
+        android:layout_below="@id/main_username"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:drawableLeft="@drawable/lock"
+        android:hint="Password"/>
+
+    <Button
+        style="@style/button_15"
+        android:id="@+id/main_login"
+        android:layout_below="@id/main_password"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Login" />
+
+    <TextView
+        android:id="@+id/main_forgot_password"
+        style="@style/text_14"
+        android:layout_below="@id/main_login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:text="Forgot Password"
+        android:textColor="@color/purple" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_forgot_password"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/main_dont_account"
+            style="@style/text_14"
+            android:text="Don't have an account?" />
+
+        <TextView
+            android:id="@+id/main_signup"
+            style="@style/text_14"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_toRightOf="@id/main_dont_account"
+            android:text="Signup"
+            android:textColor="@color/purple" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
