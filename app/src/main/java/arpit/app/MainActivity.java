@@ -1,9 +1,11 @@
 package arpit.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -17,7 +19,8 @@ import com.google.android.material.snackbar.Snackbar;
 public class MainActivity extends AppCompatActivity {
 
     Button login;
-    EditText username,password;
+    public static EditText username,password;
+    TextView signup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +53,20 @@ public class MainActivity extends AppCompatActivity {
                     System.out.println("Login Successfully");
                     Toast.makeText(MainActivity.this, "Login Successfully", Toast.LENGTH_LONG).show();
                     Snackbar.make(view, "Login Successfully", Snackbar.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this,DashboardActivity.class);
+                    startActivity(intent);
                 }
             }
         });
+
+        signup = findViewById(R.id.main_signup);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SignupActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
