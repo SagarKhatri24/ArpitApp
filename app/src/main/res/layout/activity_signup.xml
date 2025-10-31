@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -46,6 +47,45 @@
         android:drawableLeft="@drawable/lock"
         android:hint="Confirm Password"
         android:inputType="textPassword" />
+
+    <RadioGroup
+        android:id="@+id/signup_gender"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:layout_weight="1"
+            android:id="@+id/signup_male"
+            style="@style/radio_15"
+            android:text="Male" />
+
+        <RadioButton
+            android:layout_weight="1"
+            android:id="@+id/signup_female"
+            style="@style/radio_15"
+            android:text="Female" />
+
+    </RadioGroup>
+
+    <Spinner
+        android:popupBackground="@color/light_purple"
+        android:id="@+id/signup_city"
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <CheckBox
+        android:id="@+id/signup_terms"
+        android:textColor="@color/purple"
+        android:textSize="@dimen/_12sdp"
+        app:buttonTint="@color/purple"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:text="Accept Terms &amp; Condition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/signup_button"
