@@ -1,6 +1,7 @@
 package arpit.app;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,6 +39,7 @@ public class SignupActivity extends AppCompatActivity {
 
     //String[] cityArray = {"Ahmedabad","Vadodara","Surat","Rajkot"};
     ArrayList<String> arrayList;
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,11 @@ public class SignupActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        db = openOrCreateDatabase("Arpit.db",MODE_PRIVATE,null);
+
+        String tableQuery = "CREATE TABLE IF NOT EXISTS USERS(USERID INTEGER PRIMARY KEY AUTOINCREMENT,NAME VARCHAR(50),EMAIL VARCHAR(50),CONTACT BIGINT(10),PASSWORD VARCHAR(20),GENDER VARCHAR(10),CITY VARCHAR(20))";
+        db.execSQL(tableQuery);
 
         name = findViewById(R.id.signup_username);
         email = findViewById(R.id.signup_email);
