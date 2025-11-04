@@ -1,6 +1,7 @@
 package arpit.app;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -40,6 +41,8 @@ public class SignupActivity extends AppCompatActivity {
     //String[] cityArray = {"Ahmedabad","Vadodara","Surat","Rajkot"};
     ArrayList<String> arrayList;
     SQLiteDatabase db;
+    String sGender;
+    String sCity = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +88,8 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if(i!=0) {
-                    Toast.makeText(SignupActivity.this, arrayList.get(i), Toast.LENGTH_SHORT).show();
+                    sCity = arrayList.get(i);
+                    Toast.makeText(SignupActivity.this, sCity, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -103,7 +107,8 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(@NonNull RadioGroup radioGroup, int i) {
                 RadioButton radioButton = findViewById(i);
-                Toast.makeText(SignupActivity.this, radioButton.getText().toString(), Toast.LENGTH_SHORT).show();
+                sGender = radioButton.getText().toString();
+                Toast.makeText(SignupActivity.this, sGender, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -165,10 +170,20 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(SignupActivity.this, "Please Accept Terms & Conditions", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    System.out.println("Signup Successfully");
-                    Toast.makeText(SignupActivity.this, "Signup Successfully", Toast.LENGTH_LONG).show();
-                    Snackbar.make(view, "Signup Successfully", Snackbar.LENGTH_SHORT).show();
-                    onBackPressed();
+                    String selectQuery = "SELECT * FROM USERS WHERE EMAIL='"+email.getText().toString()+"' OR CONTACT='"+contact.getText().toString()+"'";
+                    Cursor cursor = db.rawQuery(selectQuery,null);
+                    if(cursor.getCount() >0){
+                        Toast.makeText(SignupActivity.this, "User Already Exists", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        String insertQuery = "INSERT INTO USERS VALUES (NULL,'"+name.getText().toString()+"','"+email.getText().toString()+"','"+contact.getText().toString()+"','"+password.getText().toString()+"','"+sGender+"','"+sCity+"')";
+                        db.execSQL(insertQuery);
+
+                        System.out.println("Signup Successfully");
+                        Toast.makeText(SignupActivity.this, "Signup Successfully", Toast.LENGTH_LONG).show();
+                        Snackbar.make(view, "Signup Successfully", Snackbar.LENGTH_SHORT).show();
+                        onBackPressed();
+                    }
                 }
             }
         });
