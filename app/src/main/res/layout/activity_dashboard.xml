@@ -14,4 +14,25 @@
         android:text="Welcome"
         style="@style/text_30"/>
 
+    <Button
+        android:id="@+id/dashboard_profile"
+        android:text="Profile"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_below="@id/dashboard_welcome"
+        style="@style/button_15"/>
+
+    <Button
+        android:id="@+id/dashboard_logout"
+        android:text="Logout"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_below="@id/dashboard_profile"
+        style="@style/button_15"/>
+
+    <Button
+        android:id="@+id/dashboard_delete"
+        android:text="Delete Account"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_below="@id/dashboard_logout"
+        style="@style/button_15"/>
+
 </RelativeLayout>
